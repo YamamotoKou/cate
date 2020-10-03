@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
   #[!]で直接emailの値を小文字にする．
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }

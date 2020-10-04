@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user &.authenticate(params[:session][:password])
       #user && user.authenticate(params[:session][:password])
       log_in user
+      remember user
       redirect_to user
     else
       flash.now[:danger] = '入力されたユーザー名やパスワードが正しくありません。確認してからやり直してください。'
@@ -16,7 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    # 二つのブラウザでのログアウトのエラーを防ぐ
+    log_out if logged_in?
     redirect_to root_url
   end
 end

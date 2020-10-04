@@ -33,6 +33,7 @@ class User < ApplicationRecord
   end
 
   def authenticated?(remember_token)
+    # 一方のブラウザでログアウトし， もう一方がログインで終了しても, このメソッドを適応（エラー）させないように.
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end

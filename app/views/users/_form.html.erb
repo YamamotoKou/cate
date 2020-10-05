@@ -1,0 +1,25 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <% if logged_in? %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  <% end %>
+  <% if @user.image? %>
+    <%= image_tag @user.image.url %>
+  <% end %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

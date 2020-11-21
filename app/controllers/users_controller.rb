@@ -6,11 +6,14 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroys
 
   def index
-    @users = User.all
+    @users = User.where(activated: true)
+    # @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    # 有効化されていなければリダイレクトさせる
+    # redirect_to root_url and return unless @user.activated?
   end
 
   def new
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
+      @user.send_activation_email
       flash[:info] = "送信されたメールをご確認ください．"
       redirect_to root_url
       # flash[:success] = "cateへようこそ！"

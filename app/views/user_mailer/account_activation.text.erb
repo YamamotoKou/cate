@@ -1,0 +1,12 @@
+Cate
+
+<%= @user.name %>様，仮登録ありがとうございます！
+
+仮登録の受付をしました．まだ登録のお手続きは完了しておりません．
+下記URLにアクセスし，引き続き本登録を行ってください．
+
+-----
+<%= edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
+-----
+example@cate.com

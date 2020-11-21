@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_183254) do
+ActiveRecord::Schema.define(version: 2020_11_15_153057) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2020_10_05_183254) do
     t.string "image"
     t.string "remember_digest"
     t.boolean "admin", default: false
+    t.string "activation_digest"
+    t.boolean "activated"
+    t.datetime "activated_at"
   end
 
 end

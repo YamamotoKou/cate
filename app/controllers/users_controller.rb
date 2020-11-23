@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # 有効化されていなければリダイレクトさせる
     # redirect_to root_url and return unless @user.activated?
+    @microposts = @user.microposts
   end
 
   def new
@@ -59,17 +60,6 @@ class UsersController < ApplicationController
   def user_params
   params.require(:user).permit(:name, :email, :password,
                                :password_confirmation, :image)
-  end
-
-  # beforeアクション
-
-  # ログイン済みユーザーかどうか確認
-  def logged_in_user
-    unless logged_in?
-      store_location
-      # flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
   end
 
   # 正しいユーザーかどうか確認

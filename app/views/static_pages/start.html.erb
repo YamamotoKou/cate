@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+    </head>
+  <body>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <div class="center jumbotron">
+      <h1>今日の糧を探したい</h1>
+
+      <h2>グルメSNS cate をはじめよう</h2>
+
+      <div>
+        <%= link_to "アカウント作成", signup_path, class: "btn btn-outline-danger" %>
+      </div>
+      <div>
+        <%= link_to "ログイン", login_path, class: "btn btn-outline-danger" %>
+      </div>
+      <div>
+        <%= link_to "簡単ログイン", "#", class: "btn btn-danger" %>
+      </div>
+    </div>
+
+    <%= link_to image_tag("naokosan.jpg", alt: "noako logo", width: "100%"),
+                        "https://rubyonrails.org/" %>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

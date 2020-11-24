@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # 有効化されていなければリダイレクトさせる
     # redirect_to root_url and return unless @user.activated?
-    @microposts = @user.microposts
+    @microposts = @user.microposts.page(params[:page])
   end
 
   def new

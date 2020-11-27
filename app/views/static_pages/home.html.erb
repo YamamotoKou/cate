@@ -16,12 +16,7 @@
     <% end %>
   </aside>
   <div class="col-md-8">
-  <% if @user.microposts.any? %>
-    <h3>糧 (<%= @user.microposts.count %>)</h3>
-    <ol class="microposts">
-      <%= render @microposts %>
-    </ol>
-    <%= paginate @microposts %>
-  <% end %>
-</div>
+    <h3>ホーム</h3>
+    <%= render 'shared/feed' %>
+  </div>
 </div>

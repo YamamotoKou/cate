@@ -78,6 +78,15 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  # 試作feedの定義
+  # 完全な実装は次章の「ユーザーをフォローする」を参照
+  def feed
+    # SQLインジェクション対策
+    # 今回の場合はid属性は単なる整数（すなわちself.idはユーザーのid）であるため危険はない．
+    # SQL文に変数を代入する場合は常にエスケープする習慣をぜひ身につけてください
+    Micropost.where("user_id = ?", id)
+  end
+
   private
 
     # メールアドレスをすべて小文字にする

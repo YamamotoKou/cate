@@ -14,11 +14,11 @@
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
   <% if logged_in? %>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
   <% end %>
-  <% if @user.image? %>
-    <%= image_tag @user.image.url %>
+  <% if @user.avatar? %>
+    <%= image_tag @user.avatar.url %>
   <% end %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

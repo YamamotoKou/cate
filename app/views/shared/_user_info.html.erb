@@ -1,4 +1,4 @@
-<% if @user.image? %>
-  <%= image_tag @user.image.url %>
+<% if @user.avatar? %>
+  <%= image_tag @user.avatar.url %>
 <% end %>
 <h1><%= @user.name %></h1>

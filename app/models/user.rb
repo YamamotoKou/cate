@@ -3,7 +3,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
-  mount_uploader :image, ImageUploader
+  mount_uploader :avatar, ImageUploader
   #[!]で直接emailの値を小文字にする．
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }

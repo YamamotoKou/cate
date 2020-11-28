@@ -3,6 +3,5 @@
    <%= render @feed_items %>
   </ol>
 # エラーの投稿がPOSTされた際「/microposts?page=2」（無効なアクション）とならないように明示的にactionを指定．
-  <%= paginate @feed_items,
-    params: { controller: :static_pages, action: :home%> 
+  <%= paginate @feed_items, params: { controller: :static_pages, action: :home } %>
 <% end %>

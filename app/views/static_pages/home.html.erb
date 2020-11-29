@@ -9,6 +9,9 @@
     <div>
       <%= link_to "プロフィール編集", edit_path(current_user), class: "btn btn-x btn-primary" %>
     </div>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
     <section class="micropost_form">
       <%= render 'shared/micropost_form' %>
     </section>

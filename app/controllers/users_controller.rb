@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #未ログインに編集させない．
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
-  #別のユーザーに編集をさせない．
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :folloeing, :followers]
+  #自分以外のユーザーに編集をさせない．
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroys
 
@@ -54,6 +54,20 @@ class UsersController < ApplicationController
     user.destroy
     flash[:success] = "#{user.name}を削除しました"
     redirect_to users_url
+  end
+
+  def following
+    @title = "フォロー"
+    @user  = User.find_by(name: params[:id])
+    @users = @user.following.page(params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @user  = User.find_by(name: params[:id])
+    @users = @user.followers.page(params[:page])
+    render 'show_follow'
   end
 
   private

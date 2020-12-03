@@ -1,6 +1,22 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 /* mixins, variables, etc. */
+//共通
+* {
+  font-family: 'メイリオ';
+  }
+
+body {
+  background-color: black;
+}
+
+.logo {
+  color: #fff;
+  letter-spacing: .05em;
+  font-family: 'ヒラギノ角ゴ ProN W3';
+  font-weight: bold;
+  font-size: 1.5em;
+}
 
 $gray-medium-light: #eaeaea;
 
@@ -14,11 +30,18 @@ $gray-medium-light: #eaeaea;
   margin-bottom: 10px;
 }
 
-/* universal */
+//start
 
-body {
+.copy-container {
+  background-color: white;
   padding-top: 60px;
+  color: black;
+  span {
+  color: black;
+  }
 }
+
+/* universal */
 
 section {
   overflow: auto;
@@ -30,11 +53,6 @@ textarea {
 
 .center {
   text-align: center;
-  h1 {
-    font-size: 3em;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
 }
 
 /* typography */

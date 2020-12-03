@@ -11,19 +11,17 @@
       <% end %>
       <%= yield %>
     </div>
-    <div class="center jumbotron">
-      <h1>今日の糧を探したい</h1>
-
-      <h2>グルメSNS cate をはじめよう</h2>
-
+    <div class="copy-container center">
+      <h1>生きる <span>糧</span> が見つかる。</h1>
+      <h2>グルメSNS <span>Cate(カテ)</span> をはじめよう。</h2>
       <div>
-        <%= link_to "アカウント作成", signup_path, class: "btn btn-outline-danger" %>
+        <%= link_to "アカウント作成", signup_path, class: "btn btn-outline-dark" %>
       </div>
       <div>
-        <%= link_to "ログイン", login_path, class: "btn btn-outline-danger" %>
+        <%= link_to "ログイン", login_path, class: "btn btn-outline-dark" %>
       </div>
       <div>
-        <%= link_to "簡単ログイン", "#", class: "btn btn-danger" %>
+        <%= link_to "簡単ログイン", "#", class: "btn btn-dark" %>
       </div>
     </div>
 

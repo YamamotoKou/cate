@@ -1,8 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Cate", root_path, id: "logo" %>
+  <div>
+    <%= link_to "Cate", root_path, class:"logo"%>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul>
         <li><%= link_to "ユーザー", users_path %></li>
         <% if logged_in? %>
           <li><%= link_to "ホーム", home_path %></li>

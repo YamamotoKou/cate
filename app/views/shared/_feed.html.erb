@@ -1,6 +1,6 @@
 <% if @user.feed.any? %>
-  <ol class="microposts">
+  <div class="all-microposts">
    <%= render @feed_items %>
-  </ol>
+  </div>
   <%= paginate @feed_items, params: { controller: :static_pages, action: :home } %>
 <% end %>

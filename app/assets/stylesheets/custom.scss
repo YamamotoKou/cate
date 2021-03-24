@@ -1,11 +1,16 @@
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+// @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 body {
   overscroll-behavior: none;
   margin: 0px;
-  // display: flex;
+  display: flex;
   font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,Arial,メイリオ,Meiryo,sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.row{
+  margin-top: 100px;
+  font-size: 10px;
 }
 
 main {
@@ -27,47 +32,6 @@ $site-color: #990033;
 $nav-off-color: #787c7b;
 $off-color: #a8abb1;
 $border-color: #dfdfdf;
-
-/* ---------- header ---------- */
-
-.logo {
-  color: red;
-  letter-spacing: .05em;
-  font-family: 'ヒラギノ角ゴ ProN W3';
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
-.site-logo {
-  padding: 0 0 5px 40px;
-  pointer-events: none;
-
-  .logo {
-    color: $site-color;
-    padding: 4px;
-    display: inline-block; //block要素にしないと幅を変えられない
-    text-align : center;
-    border-radius: 5%;
-    border: solid 2px $site-color;
-    border-left: solid 8px $site-color;
-    border-bottom: solid 8px $site-color;
-    border-top-left-radius: 15%;
-    border-bottom-right-radius: 15%;
-    pointer-events: auto;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-
-    &:hover {
-      border-left: solid 11px $site-color;
-      border-bottom: solid 14px $site-color;
-      border-top-left-radius: 18%;
-      border-bottom-right-radius: 23%;
-    }
-  }
-  
-}
-
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
@@ -134,27 +98,622 @@ h3 {
   font-weight: bold;
 }
 
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
+/* --------------------- header -------------------- */
 
+header {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 4;
 
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
+  .header-box {
+    width: 290px;
+    .side-header {
+      position: fixed;
+      width: 290px;
+    }
   }
 }
+
+.header-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .header-top {
+    padding-top: 12px;
+    pointer-events: none;
+
+    &:hover {
+      padding-top: 6px;
+    }
+
+    .site-logo {
+      padding: 0 0 5px 40px;
+      pointer-events: none;
+  
+      .logo {
+        color: $site-color;
+        padding: 4px;
+        display: inline-block; //block要素にしないと幅を変えられない
+        text-align : center;
+        border-radius: 5%;
+        border: solid 2px $site-color;
+        border-left: solid 8px $site-color;
+        border-bottom: solid 8px $site-color;
+        border-top-left-radius: 15%;
+        border-bottom-right-radius: 15%;
+        pointer-events: auto;
+        font-size: 20px;
+        font-weight: 700;
+        display: inline-block;
+        letter-spacing: -1.5px;
+
+        &:hover {
+          border-left: solid 11px $site-color;
+          border-bottom: solid 14px $site-color;
+          border-top-left-radius: 18%;
+          border-bottom-right-radius: 23%;
+        }
+      } 
+    }
+  }
+
+  .nav-menu-items {
+    .nav-menu-icons {
+      display: flex;
+      flex-direction: column;
+
+      .nav-link {
+        width: 99%;
+        display: inline-block; //block要素にしないと幅を変えられない
+        padding: 0;
+        // text-align : center; //imgタグ（インライン要素）を中央揃え
+
+        &:hover {
+
+          div {
+            span {
+              color: $site-color;
+            }
+            svg {
+              stroke: $site-color;
+            }
+          }
+        }
+
+        div {
+          padding: 15px 5px 15px 40px;
+          display: flex;
+          align-items: center;
+
+          span {
+            color: $nav-off-color;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .favorite-users-title {
+    padding: 15px 0 8px 40px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      padding-right: 5px;
+    }
+
+    span {
+      color: black;
+      font-weight: 700;
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+
+  .favorite-users {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      display: flex;
+      overflow: hidden;
+      padding: 7px 0 7px 40px;
+
+      img {
+        width: 33px;
+        height: 33px;
+        vertical-align: top;
+        border-radius: 50%;
+        transition: .3s;
+        border: 2px solid $off-color;
+      }
+
+      &:hover {
+          .user-status {
+            .user-info{span {color: $site-color;}}
+            span {color: $site-color;}
+          }
+      }
+
+      .user-status {
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .user-info {
+          display: flex;
+          flex-direction: row;
+
+          span {
+            font-size: 11px;
+            color: $off-color;
+          }
+        }
+
+        span {
+          font-size: 11px;
+          font-weight: 700;
+          color: $off-color;
+        }
+      }
+    }
+    
+  }
+}
+
+/* --------------------- main -------------------- */
+
+/*----------------page title------------------------------------*/
+
+.main-container {
+  width: 680px;
+  height: 100%;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  
+  .top-nav {
+    width: 680px;
+    height: 55px;
+    margin: 0;
+    border-bottom: 1px solid $border-color;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    z-index: 4;
+
+    .page-title {
+      padding-left: 30px;
+
+      a {
+        span {
+          font-size: 18px;
+          font-weight: 700;
+          color: black;
+        }
+      }
+      
+    }
+  }
+
+  .alert {
+    font-size: 17px;
+    color: $site-color;
+    background-color: lighten($site-color, 40%);
+    position: fixed;
+    z-index: 5;
+  }
+
+  .container {
+    margin-top: 55px;
+  
+    .all-microposts {
+      display: flex;
+      flex-direction: column;
+
+      .micropost {
+        height: 340px;
+        border-bottom: 1px solid $border-color;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+          background-color: darken(white, 3%);
+          transition: .1s;
+        }
+
+        .post-link {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          z-index: 2;
+        }
+
+        .post {
+          display: flex;
+
+          .post-img {
+            width: 310px;
+            height: 310px;
+            border-radius: 2%;
+          }
+
+          .post-document {
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+            height: 310px;
+            width: 330px;
+            position: relative;
+
+            .title-info {
+              display: flex;
+              align-items: start;
+
+              > a{
+                overflow: hidden;
+                .user-icon {
+                  width: 45px;
+                  height: 45px;
+                  border-radius: 50%;
+                  position: relative;
+                  z-index: 3;
+                }
+              }
+              .title-status {
+                padding-left: 5px;
+                padding-bottom: 3px;
+
+                .title {
+                  line-height: 120%;
+                  display: inline-block;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: black;
+                  width: 250px;
+                }
+                .user-info {
+                  padding-top: 5px;
+                  > a {
+                    position: relative;
+                    z-index: 3;
+                  }
+                  .user-name {
+                    padding-left: 2px;
+                    font-size: 13px;
+                    color: $nav-off-color;
+                  }
+
+                  .user-id {
+                    font-size: 12px;
+                    color: $off-color;
+                    padding-left: 3px;
+                  }
+
+                  .post-time {
+                    font-size: 12px;
+                    color: $off-color;
+                  }
+                }
+              }
+              .post-setting {
+                position: absolute;
+                right: 0;
+              }
+            }
+
+            ul {
+              padding-left: 0;
+              li {
+                padding: 3px 0 3px 0;
+                .contents {
+                  position: relative;
+                  z-index: 3;
+                  color: $nav-off-color;
+                  font-weight: bold;
+                  font-size: 14px;
+                  padding: 2px;
+                  &:hover {
+                    color: darken($nav-off-color, 30%);
+                    transition: .1s;
+                  }
+                }
+              } 
+            }
+
+            .micropost-status {
+              display: flex;
+              position: absolute;
+              bottom: 0;
+              width: 295px;
+              flex-direction: column;
+
+              .hashtag-list {
+                height: 40px;
+                .hashtag {
+                  font-size: 14px;
+                  padding: 3px 0 3px 0;
+                  color: $site-color;
+                  position: relative;
+                  z-index: 3;
+      
+                  &:hover {
+                    text-decoration: underline solid $site-color;
+                  }
+                }
+              }
+
+              .post-status{
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+
+                span {
+                  font-size: 13px;
+                  color: $off-color;
+                  line-height: 150%;
+                }
+
+                .like {
+                  display: flex;
+                  align-items: flex-end;
+                  padding: 2px;
+                  position: relative;
+                  z-index: 3;
+
+                  span {
+                    padding-left: 3px;
+                  }
+                  &:hover {
+                    svg {
+                      stroke: crimson;
+                      transition: .2s;
+                    }
+                    span {
+                      color: crimson;
+                      transition: .2s;
+                    }
+                  }
+                }
+
+                .bookmark {
+                  padding: 2px;
+                  position: relative;
+                  z-index: 3;
+                  &:hover {
+                    stroke: blue;
+                    transition: .2s;
+                  }
+                }
+
+                .question {
+                  fill: $off-color;
+                  width: 38px;
+                  height: 38px;
+                  position: relative;
+                  z-index: 3;
+
+                  &:hover {
+                    fill: darken($off-color, 10%);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*----------------topic-----------------------------------------*/
+
+.right-container {
+  width: 315px;
+  vertical-align: top;
+  display: flex;
+  justify-content: flex-end;
+  position: -webkit-sticky;  /* for Safari */
+  position: sticky;
+  top: -350px;
+  z-index: 0;
+
+  .right-icon {
+    background-color: white;
+    position: fixed;
+    height: 55px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    .my-icons {
+      padding-right: 15px;
+      padding-left: 7px;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border: 2px solid $off-color;
+        border-radius: 50%;
+        margin: 0px;
+
+        &:hover {
+          border: 2px solid $site-color;
+          transition: .3s;
+        }
+        
+      }
+    }
+
+    svg {
+      padding: 10px;
+      vertical-align: -5px;
+      stroke: $off-color;
+      &:hover {
+        stroke: $site-color;
+        transition: .3s;
+      }
+    }
+
+    .btn-share {
+      a {
+        display: inline-block;
+        text-decoration: none;
+        background: $site-color;
+        // border-radius: 50%; 丸型に
+        overflow: hidden;
+        transition: .3s;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+  
+        &:hover{
+          background: darken($site-color, 5%);
+        }
+  
+        svg {
+          padding: 8px 10px 8px 14px;
+          fill: white;
+          stroke: white;
+        }
+  
+        span {
+          color: white;
+          padding-right: 14px;
+          font-size: 13px;
+          font-weight: 700;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  .sub-container {
+    background-color: rgb(247, 249, 250);
+    border-radius: 10px;
+    margin-top: 55px;
+    width: 290px;
+
+    .sub-container-title {
+      width: 100%;
+      height: 55px;
+      display: flex;
+        //下のコンテンツにホバーした時のバックグラウンドカラーの変化がこちらのボーダーボトムに影響してしまうのを防ぐ．
+
+      .btn-trending { //選択されているほうにこのスタイルを当てる
+        color: $site-color;
+        border-bottom: 3px solid $site-color;
+      }
+      
+      a {
+        width: 50%;
+        height: 55px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $nav-off-color;
+        font-weight: 700;
+        font-size: 17px;
+        box-sizing: border-box;
+        // border-top-left-radius: 10px;
+        // border-top-right-radius: 10px;
+        &:hover {
+          color: $site-color;
+          background-color: darken(rgb(247, 249, 250), 3%);
+        }
+      }
+    }
+
+    .sub-contents {
+      display: flex;
+      flex-direction: column;
+
+      > a{
+        &:hover {
+          background-color: darken(rgb(247, 249, 250), 3%);
+          transition: .1s;
+        }
+      }
+
+      .trend-contents-wrap {
+        width: 290px;
+        border-top: 1px solid $border-color;
+        display: flex;
+        justify-content: center;
+
+        .trend-contents {  //トレンドコンテンツ------------------
+          width: 260px;
+          display: flex;
+          flex-direction: column;
+          padding: 15px 0 15px 0;
+
+          .trend-contents-document {
+            display: flex;
+            padding-bottom: 5px;
+
+            .user-icon {
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+            }
+
+            > div {
+              display: flex;
+              flex-direction: column;
+
+              .title {
+                font-size: 13px;
+                font-weight: 700;
+              }
+
+              div {
+                .user-name {
+                  font-size: 12px;
+                  color: $nav-off-color;
+                }
+  
+                .user-id {
+                  font-size: 12px;
+                  color: $off-color;
+                  padding-left: 3px;
+                }
+  
+                .post-time {
+                  font-size: 12px;
+                  color: $off-color;
+                } 
+              }
+            }
+          }
+
+          .trend-contents-img {
+            text-align: center;
+            img {
+              width: 240px;
+              height: 240px;
+              border-radius: 2%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*----------------topic-----------------------------------------*/
 
 /* footer */
 
@@ -335,12 +894,12 @@ aside {
   }
 }
 
-span.image {
-  margin-top: 10px;
-  input {
-    border: 0;
-  }
-}
+// span.image {
+//   margin-top: 10px;
+//   input {
+//     border: 0;
+//   }
+// }
 
 // pagenate
 

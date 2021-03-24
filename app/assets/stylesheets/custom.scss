@@ -1,21 +1,71 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
-/* mixins, variables, etc. */
-//共通
-* {
-  font-family: 'メイリオ';
-  }
-
 body {
-  background-color: black;
+  overscroll-behavior: none;
+  margin: 0px;
+  // display: flex;
+  font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,Arial,メイリオ,Meiryo,sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
+main {
+  font-size: 0; //左右の余白を消す
+  flex-grow: 7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+//リンクの色，線を設定．
+a, a:link, a:visited, a:hover, a:active {
+  color: black;
+  text-decoration: none;
+}
+
+//共通で使用するカラーの定義
+$site-color: #990033;
+$nav-off-color: #787c7b;
+$off-color: #a8abb1;
+$border-color: #dfdfdf;
+
+/* ---------- header ---------- */
+
 .logo {
-  color: #fff;
+  color: red;
   letter-spacing: .05em;
   font-family: 'ヒラギノ角ゴ ProN W3';
   font-weight: bold;
   font-size: 1.5em;
+}
+
+.site-logo {
+  padding: 0 0 5px 40px;
+  pointer-events: none;
+
+  .logo {
+    color: $site-color;
+    padding: 4px;
+    display: inline-block; //block要素にしないと幅を変えられない
+    text-align : center;
+    border-radius: 5%;
+    border: solid 2px $site-color;
+    border-left: solid 8px $site-color;
+    border-bottom: solid 8px $site-color;
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    pointer-events: auto;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+
+    &:hover {
+      border-left: solid 11px $site-color;
+      border-bottom: solid 14px $site-color;
+      border-top-left-radius: 18%;
+      border-bottom-right-radius: 23%;
+    }
+  }
+  
 }
 
 $gray-medium-light: #eaeaea;

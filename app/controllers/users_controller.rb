@@ -13,9 +13,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(name: params[:id])
     @micropost = @user.microposts.build
-    # 有効化されていなければリダイレクトさせる
-    # redirect_to root_url and return unless @user.activated?
     @microposts = @user.microposts.page(params[:page])
+    redirect_to root_url and return unless @user.activated?
   end
 
   def new
@@ -50,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
+    user = User.find_by(name: params[:id])
     user.destroy
     flash[:success] = "#{user.name}を削除しました"
     redirect_to users_url

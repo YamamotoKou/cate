@@ -4,3 +4,12 @@
   </div>
   <%= paginate @feed_items, params: { controller: :static_pages, action: :home } %>
 <% end %>
+
+<%
+=begin
+%>
+　マイクロポストを作成した後にhomeに戻るとページのurlがmicropost２になってしまうので
+　明治的にcontroller, actionを指定する．
+<%
+=end
+%>

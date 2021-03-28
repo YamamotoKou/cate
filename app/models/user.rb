@@ -1,14 +1,10 @@
 class User < ApplicationRecord
-  has_many :microposts, dependent: :destroy # ユーザーが削除されたらマイクロポストも破棄
-  # userがフォローした一覧（followed_idの集合）の関連付け
-  # active_relationships = follower_id → followed_id
+  has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
-                                  dependent:   :destroy #ユーザーを削除したらユーザーのリレーションシップも破棄
+                                  dependent:   :destroy
   has_many :following, through: :active_relationships,
                         source: :followed
-  # userがフォローされた一覧（follower_idの集合）の関連付け
-  # passive_relationships = followed_id ← follower_id
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy

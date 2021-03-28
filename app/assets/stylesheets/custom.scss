@@ -14,8 +14,7 @@ body {
 }
 
 main {
-  font-size: 0; //左右の余白を消す
-  flex-grow: 7;
+  flex-grow: 2;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -103,7 +102,7 @@ h3 {
 header {
   display: flex;
   justify-content: flex-end;
-  flex-grow: 4;
+  flex-grow: 1.5;
 
   .header-box {
     width: 290px;
@@ -715,6 +714,8 @@ header {
 
 /*----------------topic-----------------------------------------*/
 
+
+
 /* footer */
 
 footer {
@@ -906,3 +907,5 @@ aside {
 nav.pagination {
   display: none;
 }
+
+

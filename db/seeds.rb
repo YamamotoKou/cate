@@ -12,6 +12,7 @@ User.create!(name:  "guruman1",
              password:              "meshiuma",
              password_confirmation: "meshiuma",
              avatar: File.open('./app/assets/images/naruman.jpeg'),
+             admin: false,
              activated: true,
              activated_at: Time.zone.now)
 

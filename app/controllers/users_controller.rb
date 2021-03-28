@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(name: params[:id])
+    @user = User.find_by(catena_id: params[:id])
     @micropost = @user.microposts.build
     @microposts = @user.microposts.page(params[:page])
     redirect_to root_url and return unless @user.activated?
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find_by(name: params[:id])
+    user = User.find_by(catena_id: params[:id])
     user.destroy
     flash[:success] = "#{user.name}を削除しました"
     redirect_to users_url

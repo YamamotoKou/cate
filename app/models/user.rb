@@ -112,7 +112,7 @@ class User < ApplicationRecord
   end
 
   def to_param
-    name
+    catena_id
   end
 
   private

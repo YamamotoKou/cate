@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  #未ログインに編集させない．
+  #未ログインに編集させない
   before_action :logged_in_user, only: [:edit, :update, :destroy, :folloeing, :followers]
-  #自分以外のユーザーに編集をさせない．
+  #自分以外のユーザーに編集をさせない
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroys
 
@@ -15,6 +15,23 @@ class UsersController < ApplicationController
     @micropost = @user.microposts.build
     @microposts = @user.microposts.page(params[:page])
     redirect_to root_url and return unless @user.activated?
+
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id #お互いのroom_idを取得
+          end
+        end
+      end
+      unless @isRoom #まだ共有のルームがなければインスタンスを生成
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def new
@@ -57,14 +74,14 @@ class UsersController < ApplicationController
 
   def following
     @title = "フォロー"
-    @user  = User.find_by(name: params[:id])
+    @user  = User.find_by(catena_id: params[:id])
     @users = @user.following.page(params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "フォロワー"
-    @user  = User.find_by(name: params[:id])
+    @user  = User.find_by(catena_id: params[:id])
     @users = @user.followers.page(params[:page])
     render 'show_follow'
   end

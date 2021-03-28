@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+
+  #DM機能
+  has_many :entries, dependent: :destroy
+  has_many :direct_messages, dependent: :destroy
+  has_many :rooms, through: :entries
+
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -87,8 +93,6 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
-  # 試作feedの定義
-  # 完全な実装は次章の「ユーザーをフォローする」を参照
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
@@ -111,9 +115,14 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def followed_by?(other_user)
+    followers.include?(other_user)
+  end
+
   def to_param
     catena_id
   end
+
 
   private
 

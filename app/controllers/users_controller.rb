@@ -12,8 +12,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(catena_id: params[:id])
-    @micropost = @user.microposts.build
+    @micropost = @user.microposts.build #投稿フォーム用
     @microposts = @user.microposts.page(params[:page])
+    @likes = @user.likes.build
     redirect_to root_url and return unless @user.activated?
 
     @currentUserEntry=Entry.where(user_id: current_user.id)
@@ -84,6 +85,14 @@ class UsersController < ApplicationController
     @user  = User.find_by(catena_id: params[:id])
     @users = @user.followers.page(params[:page])
     render 'show_follow'
+  end
+
+  def likes
+    @title = "いいね"
+    @user  = User.find_by(catena_id: params[:id])
+    @like =
+    @microposts  = @user.liked_posts.page(params[:page])
+    render 'show_likes'
   end
 
   private

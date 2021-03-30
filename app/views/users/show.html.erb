@@ -17,6 +17,7 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <%= link_to "いいね一覧", likes_user_path(@user) %>
   </aside>
 
   <% unless @user.id == current_user.id %>
@@ -38,13 +39,15 @@
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>投稿 (<%= @user.microposts.count %>)</h3>
-      <div class="micropost jscroll" >
-        <ol class="microposts">
-          <%= render @microposts %>
-        </ol>
-        <%= paginate @microposts %>
+      <div class="feed jscroll" >
+        <div class="micropost jscroll" >
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+          <%= paginate @microposts %>
+        </div>
       </div>
-  <% end %>
+    <% end %>
 </div>
 </div>
 

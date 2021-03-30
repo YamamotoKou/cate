@@ -1,6 +1,9 @@
 class Micropost < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+
   # 投稿日時が早いものが上に来るように取得する設定
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true

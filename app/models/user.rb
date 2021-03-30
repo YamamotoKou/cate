@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :direct_messages, dependent: :destroy
   has_many :rooms, through: :entries
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :micropost
 
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
@@ -123,6 +125,9 @@ class User < ApplicationRecord
     catena_id
   end
 
+  def already_liked?(micropost)
+    self.likes.exists?(micropost_id: micropost.id)
+  end
 
   private
 

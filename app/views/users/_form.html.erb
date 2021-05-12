@@ -1,0 +1,28 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :ユーザー名 %>
+  <%= f.text_field :name %>
+
+  <%= f.label :catena_id, "Catena ID" %>
+  <%= f.text_field :catena_id, placeholder: "15文字以下 半角英数字・記号(-_)" %>
+
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email %>
+
+  <%= f.label :パスワード %>
+  <%= f.password_field :password, placeholder: "6文字以上 半角英数字・記号(-_)" %>
+
+  <%= f.label :パスワード確認 %>
+  <%= f.password_field :password_confirmation, placeholder: "再度パスワードを入力" %>
+
+  <% if logged_in? %>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  <% end %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar %>
+  <% end %>
+
+  <%= f.submit yield(:button_text) %>
+<% end %>

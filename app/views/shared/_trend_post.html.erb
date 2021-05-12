@@ -1,0 +1,32 @@
+<div class="sub-contents">
+  <%= link_to micropost_contents_path(micropost_id: trend_post.id), class: "post-link" do %>
+    <div class="trend-contents-wrap">
+      <div class="trend-contents">
+        <div class="title-info">
+          <%= link_to user_path(trend_post.user) do %>
+            <%= image_tag trend_post.user.sub_icon_avatar, class: "user-icon"%>
+          <% end %>
+          <div class="title-status">
+            <%= link_to micropost_contents_path(micropost_id: trend_post.id) do %>
+              <span class="post-title">
+                <%= trend_post.text %>
+              </span>
+            <% end %>
+            <div class="user-info">
+              <%= link_to trend_post.user do %>
+                <span class="user-name"><%= trend_post.user.name %></span>
+                <span class="user-id"><%= trend_post.user.catena_id %></span>
+              <% end %>
+              <span class="post-time">
+                ・ <%= time_ago_in_words(trend_post.created_at) %>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="trend-contents-img">
+          <%= image_tag trend_post.right_container_image, class: "post-img" if trend_post.image.attached?%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

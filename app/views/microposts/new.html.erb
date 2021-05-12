@@ -1,0 +1,74 @@
+<section class="micropost_form">
+  <% provide(:title, "投稿") %>
+  <%= form_with(model: @micropost, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.label :text, "投稿のタイトル"%>
+      <%= f.text_field :text, placeholder: "投稿のタイトルを記入…" %>
+    </div>
+    <span class="image">
+      <%= f.label :image, "画像"%>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    </span>
+
+    <%= f.fields_for :contents do |ct| %>
+      <span>コンテンツ</span>
+      <%= ct.label :status, "無料公開"%>
+      <%= ct.radio_button :status, :free, checked: true, id: 'radio'%>
+      <%= ct.label :status, "有料公開"%>
+      <%= ct.radio_button :status, :paid, id: 'radio'%>
+      
+      <%= ct.label :title, "タイトル"%>
+      <%= ct.text_field :title, class: 'form-control' %>
+
+      <%= ct.label :sentence, "内容"%>
+      <%= ct.text_area :sentence %>
+
+      <div class="switchItems">
+        <%= ct.label :price, "値段"%>
+        <%= ct.number_field :price %>
+      </div>
+    <% end %>
+
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
+  <% end %>
+
+  <script type="text/javascript">
+    $("#micropost_image").bind("change", function() {
+      var size_in_megabytes = this.files[0].size/1024/1024;
+      if (size_in_megabytes > 5) {
+        alert("Maximum file size is 5MB. Please choose a smaller file.");
+        $("#micropost_image").val("");
+      }
+    });
+  </script>
+
+  <script>
+    $(function(){
+      var switchBtn = $('input[id=radio]');
+      var switchItems = $('.switchItems');
+      var inputField = 'input';
+
+      switchBtn.on('change', function(){
+      
+        var inputValue = $(this).val();
+
+        if(inputValue === 'free'){
+          switchItems.hide();
+        }else{
+          switchItems.show();
+        }
+      });
+    });
+    $(function(){
+      var switchItems = $('.switchItems');
+      var inputValue = $('input[id=radio]:checked').val();
+      if(inputValue === 'free'){
+        switchItems.hide();
+      }else{
+        switchItems.show();
+      }
+    });
+  </script>
+  
+</section>

@@ -1,0 +1,27 @@
+<div class="title-info">
+  <%= link_to user_path(micropost.user) do %>
+    <%= image_tag micropost.user.main_icon_avatar, class: "user-icon"%>
+  <% end %>
+  <div class="title-status">
+  <%= link_to micropost_contents_path(micropost_id: micropost.id) do %>
+    <span class="post-title">
+      <%= micropost.text %>
+    </span>
+  <% end %>
+    <div class="user-info">
+      <%= link_to micropost.user do %>
+        <span class="user-name"><%= micropost.user.name %></span>
+        <span class="user-id"><%= micropost.user.catena_id %></span>
+      <% end %>
+      <span class="post-time">
+        ・ <%= time_ago_in_words(micropost.created_at) %>
+      </span>
+    </div>
+  </div>
+  <% if current_user?(micropost.user) %>
+    <%= link_to "削除", micropost, method: :delete, data: { confirm: "削除しますか？" } %>
+  <% end %>
+  <div class="post-setting">
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="ellypsisIconTitle" stroke="#bfbfbf" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" color="black"> <title id="ellypsisIconTitle">Ellypsis</title> <circle cx="12" cy="12" r="1"/> <circle cx="6" cy="12" r="1"/> <circle cx="18" cy="12" r="1"/> </svg>
+  </div>
+</div>

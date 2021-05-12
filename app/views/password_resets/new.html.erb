@@ -1,0 +1,15 @@
+<% provide(:title, "パスワードの再設定") %>
+<div class="form-wrap">
+  <div class="form-container">
+    <span>パスワードを再設定するためのURLを送信します</span><br>
+    <div>
+      <%= form_with(url: password_resets_path, scope: :password_reset,
+                      local: true) do |f| %>
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, placeholder: "登録したメールアドレス" %>
+
+        <%= f.submit "送信" %>
+      <% end %>
+    </div>
+  </div>
+</div>

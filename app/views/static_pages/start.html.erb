@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+    </head>
+  <body class="start-body">
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <div class="site-logo">
+      <span class="logo">Catena</span>
+    </div>
+    <span class="title-font catchcopy">情報は価値を持つ、生きることの糧</span>
+    <span class="title-font">Catena(カテナ)を始めよう</span>
+    <div class="btn-container">
+      <div class="btn start-btn">
+        <%= link_to "アカウント作成", signup_path %>
+      </div>
+      <div class="btn start-btn login-btn">
+        <%= link_to "ログイン", login_path %>
+      </div>
+      <div class="btn start-btn login-btn">
+        <%= link_to "簡単ログイン", "#" %>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

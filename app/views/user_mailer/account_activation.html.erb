@@ -1,0 +1,11 @@
+<h1>Cate</h1>
+
+<p><%= @user.name %>様，Cateアカウントの仮登録ありがとうございます．</p>
+<p>まだ登録のお手続きは完了しておりません．</p>
+<p>下記URLにアクセスし，引き続き本登録を行ってください．</p>
+
+<p>-----</p>
+<%= link_to "本登録を完了させる", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
+<p>-----</p>
+<p>example@cate.com</p>

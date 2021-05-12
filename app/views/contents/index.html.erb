@@ -1,0 +1,65 @@
+<% provide(:title, "#{@user.name} の投稿") %>
+
+<div class="contents-wrap">
+  <div class="contents">
+
+    <%= render 'shared/post_title', micropost: @micropost %>
+
+    <div class="post-img-wrap">
+      <%= image_tag @micropost.center_container_image, class: "post-img" if @micropost.image.attached?%>
+    </div>
+
+    <div class="content-wrap">
+      <% @contents.each do |content| %>
+        <% if current_user != @user && content.status == "paid"%>
+            <div>
+              <span class="content-title"><%= content.title %></span>
+              <% if current_user.transacted?(content) %>
+                <span class="content-transaction">購入済み</span>
+              <% else %>
+                <span class="content-transaction">未購入</span>
+              <% end %>
+              <span class="content-price"><%= content.price %>ポイント</span>
+            </div>
+
+            <% if current_user.transacted?(content) %>
+              <span class="content-sentence"><%= content.sentence %></span>
+            <% else %>
+              <%= form_with(model: content.transaction_logs.build, local:true) do |f| %>
+                <div><%= hidden_field_tag :seller_id, @user.id %></div>
+                <div><%= hidden_field_tag :content_id, content.id %></div>
+                <%= f.submit "購入する" %>
+              <% end %>
+            <% end %>
+        <% else %>
+          <div>
+            <span class="content-title"><%= content.title %></span>
+            <% if content.status == "paid" %>
+              <span class="content-price">(<%= content.price %>ポイント)</span>
+            <% end %>
+          </div>
+            <span class="content-sentence"><%= content.sentence %></span>
+        <% end %>
+      <%end%>
+    </div>
+
+    <div class="post-status">
+      <%= render 'likes/like_form', micropost: @micropost %>
+      <%= render 'bookmarks/bookmark_form', micropost: @micropost %>
+    </div>
+
+    <% if @micropost.likes.any? %>
+      <div class="like-user-wrap">
+        <span class="like-user">いいねしたユーザー</span>
+        <div>
+          <% @micropost.liked_users.each do |user| %>
+            <%= link_to user do %>
+              <%= image_tag user.avatar, class: "like-user"%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

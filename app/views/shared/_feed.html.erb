@@ -1,0 +1,7 @@
+<% if @feed_items.any? %>
+  <ul class="microposts">
+   <%= render @feed_items %>
+  </ul>
+  <%= paginate @feed_items,
+                params: { controller: :microposts, action: :home } %>
+<% end %>

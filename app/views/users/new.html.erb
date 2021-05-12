@@ -1,0 +1,15 @@
+<% provide(:title, '新規登録') %>
+<% provide(:button_text, '登録') %>
+
+<div class="form-wrap">
+  <div class="form-container">
+    <span class="title-font">アカウントを作成する</span>
+    <div class="form-title-link">
+      <%= link_to "ログイン", login_path, class: "login-link" %>
+      <%= link_to "新規登録", signup_path, class: "signup-link now-link" %>
+    </div>
+    <div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

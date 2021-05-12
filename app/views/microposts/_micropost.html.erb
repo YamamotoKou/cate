@@ -1,0 +1,22 @@
+
+<li id="micropost-<%= micropost.id %>" class="micropost">
+  <%= link_to micropost_contents_path(micropost_id: micropost.id), class: "post-link" do %><% end %>
+  <div class="post">
+    <%= image_tag micropost.center_container_image, class: "post-img" %>
+    <div class="post-sentence">
+
+      <%= render 'shared/post_title', micropost: micropost %>
+
+      <div class="post-contents-wrap">
+        <span class="post-content-title">・撮影方法</span>
+      </div>
+
+      <div class="post-status-wrap">
+        <div class="post-status">
+          <%= render 'likes/like_form', micropost: micropost %>
+          <%= render 'bookmarks/bookmark_form', micropost: micropost %>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

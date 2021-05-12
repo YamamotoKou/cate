@@ -1,0 +1,18 @@
+<% provide(:title, "ホーム") %>
+
+  <div class="feed jscroll all-microposts" >
+    <%= render 'shared/feed' %>
+  </div>
+
+<script>
+  $(window).on('scroll', function() {
+      scrollHeight = $(document).height();
+      scrollPosition = $(window).height() + $(window).scrollTop();
+      if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+            $('.jscroll').jscroll({
+              contentSelector: '.feed',
+              nextSelector: 'span.next:last a'
+            });
+      }
+  });
+</script>

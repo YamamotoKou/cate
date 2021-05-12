@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <main>
+      <div class="main-container">
+        <div class="top-nav">
+          <div class="page-title">
+            <a href="#">
+              <span><%= yield(:title) %></span>
+            </a>
+          </div>
+        </div>
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+        <div class="container">
+          <%= debug(params) if Rails.env.development? %>
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'layouts/right_contents' %>
+    </main>
+  </body>
+</html>

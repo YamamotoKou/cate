@@ -1,0 +1,47 @@
+<div class="right-container">
+  <div class="right-icon">
+    <%= link_to search_path, class: "right-svg" do %>
+      <svg class="search"  role="img" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" aria-labelledby="searchIconTitle" stroke="#a8abb1" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="black"><path d="M14.4121122,14.4121122 L20,20"/> <circle cx="10" cy="10" r="6"/> </svg>
+    <% end %>
+    <% if logged_in? %>
+      <%= link_to notifications_path, class: "right-svg" do %>
+        <svg role="img" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" aria-labelledby="bellIconTitle" stroke="#a8abb1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" color="black"> <path stroke-linejoin="round" d="M10.5,4.5 C12.1666667,4.5 13.8333333,4.5 15.5,4.5 C17.5,4.5 18.8333333,3.83333333 19.5,2.5 L19.5,18.5 C18.8333333,17.1666667 17.5,16.5 15.5,16.5 C13.8333333,16.5 12.1666667,16.5 10.5,16.5 L10.5,16.5 C7.1862915,16.5 4.5,13.8137085 4.5,10.5 L4.5,10.5 C4.5,7.1862915 7.1862915,4.5 10.5,4.5 Z" transform="rotate(90 12 10.5)"/> <path d="M11,21 C12.1045695,21 13,20.1045695 13,19 C13,17.8954305 12.1045695,17 11,17" transform="rotate(90 12 19)"/> </svg>
+      <% end %>
+      <%= link_to notifications_path, class: "right-svg" do %>
+        <svg role="img" xmlns="http://www.w3.org/2000/svg" width="23px" height="23px" viewBox="0 0 24 24" aria-labelledby="envelopeAltIconTitle" stroke="#a8abb1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#2329D6"> <title id="envelopeAltIconTitle">Envelope</title> <rect width="20" height="14" x="2" y="5"/> <path stroke-linecap="round" d="M2 5l10 9 10-9"/> </svg>
+      <% end %>
+      <div class="my-icons">
+        <%= link_to user_path(current_user) do %>
+          <%= image_tag current_user.avatar, class: "user-icon"%>
+        <% end %>
+      </div>
+      <div class="btn">
+        <%= link_to new_micropost_path, class: "post-btn" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="19px" height="19px" viewBox="0 0 24 24"><path d="M5 4h-3v-1h3v1zm12 9c0 2.206-1.794 4-4 4s-4-1.794-4-4 1.794-4 4-4 4 1.794 4 4zm-1 0c0-1.657-1.342-3-3-3s-3 1.343-3 3 1.342 3 3 3 3-1.343 3-3zm8-8v17h-24v-17h5.93c.669 0 1.293-.334 1.664-.891l1.406-2.109h8l1.406 2.109c.371.557.995.891 1.664.891h3.93zm-19 4c0-.552-.447-1-1-1s-1 .448-1 1 .447 1 1 1 1-.448 1-1zm14 4c0-3.314-2.687-6-6-6s-6 2.686-6 6 2.687 6 6 6 6-2.686 6-6z"/></svg>
+          <span>投 稿</span>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="btn">
+        <%= link_to login_path, class: "right-login-btn" do %>
+          <span>ログイン</span>
+        <% end %>
+      </div>
+      <div class="btn">
+        <%= link_to signup_path, class: "right-signup-btn" do %>
+          <span>新規登録</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="sub-container">
+    <div class="sub-container-title">
+      <a class="btn-trending" href="#">トレンド</a>
+      <a class="btn-popular-subscription" href="#">話題のサブスク</a>
+    </div>
+
+
+
+  </div>
+</div>

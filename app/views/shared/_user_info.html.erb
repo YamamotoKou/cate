@@ -1,0 +1,2 @@
+<%= image_tag @user.avatar.variant(resize_to_fill: [170, 170]), class: "hoge" if @user.avatar.attached? %>
+<h1><%= @user.name %></h1>

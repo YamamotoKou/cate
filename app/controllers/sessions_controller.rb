@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  #ログイン済みにアクセスさせない
+  before_action :logged_out_user?, only: [:new, :create]
 
   def new
     @trend_posts = Micropost.trend
@@ -29,4 +31,9 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
+
+  private
+
+
+
 end

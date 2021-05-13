@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+
+    # ユーザーがログアウトしていればtrue、その他ならfalseを返す
+    def logged_out_user?
+      unless current_user.nil?
+        flash[:danger] = "ログイン済みです"
+        redirect_to home_url
+      end
+    end
 end

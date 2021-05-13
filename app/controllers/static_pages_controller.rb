@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
-  # before_action :logged_in_user
   def start
-    render :layout => nil
+    if current_user
+      redirect_to home_url
+    else
+      render :layout => nil
+    end
   end
 end

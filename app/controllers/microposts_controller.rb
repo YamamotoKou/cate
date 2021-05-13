@@ -14,6 +14,7 @@ class MicropostsController < ApplicationController
     @user = current_user
     @micropost = @user.microposts.build
     @micropost.contents.build
+    @trend_posts = Micropost.trend
   end
 
   def create

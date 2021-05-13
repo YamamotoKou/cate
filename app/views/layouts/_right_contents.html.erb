@@ -41,7 +41,9 @@
       <a class="btn-popular-subscription" href="#">話題のサブスク</a>
     </div>
 
-
+    <% @trend_posts.each do |trend_post| %>
+      <%= render 'shared/trend_post', trend_post: trend_post %>
+    <% end %>
 
   </div>
 </div>

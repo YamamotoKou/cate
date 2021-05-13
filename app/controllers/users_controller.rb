@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
-  #未ログインに編集させない
+  #未ログインにアクセスさせない
   before_action :logged_in_user, only: [:edit, :update, :destroy, :folloeing, :followers, :index]
-  #自分以外のユーザーに編集をさせない
+  #自分以外のユーザーにアクセスさせない
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroys
+  #ログイン済みにアクセスさせない
+  before_action :logged_out_user?, only: [:new, :create]
 
   def index
     @users = User.where(activated: true)

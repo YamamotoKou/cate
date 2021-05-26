@@ -73,20 +73,6 @@ $gray-medium-light: #eaeaea;
   box-sizing: border-box;
 }
 
-/* universal */
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-}
-
 .post-img {
   border-radius: 2%;
 }
@@ -95,6 +81,16 @@ textarea {
   font-size: 25px;
   font-weight: 700;
   padding-bottom: 20px;
+}
+
+.sub-title-font {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.underline-font {
+  border-bottom: solid 2px $off-color;
+  margin-bottom: 15px;
 }
 
 .logo {
@@ -142,53 +138,6 @@ textarea {
       }
     }
     div {
-      form {
-        display: flex;
-        flex-direction: column;
-        font-size: 13px;
-        font-weight: 700;
-        input[type=email], [type=password], [type=submit], [type=text] {
-          height: 30px;
-          width: 100%;
-          transition: 0.2s;
-          background-color: $border-color;
-          border-radius: 3px;
-          outline: none;
-          border: 2px solid $border-color;
-          font-weight: 700;
-        }
-        input:focus {
-          box-sizing: border-box;
-          border: 2px solid $site-color !important;
-          background-color: white;
-        }
-        input:hover {
-          transition: 0.2s;
-          border: 2px solid darken($border-color, 10%);
-        }
-        input[type=submit] {
-          margin-top: 10px;
-          font-size: 14px;
-          color: white;
-          background-color: $site-color;
-          border: 0px none;
-        }
-        input[type=submit]:hover {
-          background-color: darken($site-color, 5%);
-          cursor: pointer;
-        }
-        label[for=session_remember_me] {
-          width: 200px;
-          span {
-            vertical-align: 2px;;
-            font-size: 13px;
-            font-weight: normal;
-          }
-        }
-        input::placeholder {
-          font-weight: normal;
-        }
-      }
       .link {
         font-size: 13px;
         color: $site-color;
@@ -197,6 +146,59 @@ textarea {
         text-decoration: underline;
       }
     }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 700;
+  input[type=email], [type=password], [type=submit], [type=text], textarea {
+    height: 30px;
+    width: 100%;
+    transition: 0.2s;
+    background-color: $border-color;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid $border-color;
+    font-weight: 700;
+  }
+  textarea {
+    height: 100px;
+  }
+  input[type=text]:focus, input[type=email]:focus,
+  input[type=password]:focus, textarea:focus {
+    box-sizing: border-box;
+    border: 2px solid $site-color !important;
+    background-color: white;
+  }
+  input[type=text]:hover, input[type=email]:hover, 
+  input[type=password]:hover, textarea:hover {
+    transition: 0.2s;
+    border: 2px solid darken($border-color, 10%);
+  }
+  input[type=submit] {
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: $site-color;
+    border: 0px none;
+  }
+  input[type=submit]:hover {
+    background-color: darken($site-color, 5%);
+    cursor: pointer;
+  }
+  label[for=session_remember_me] {
+    width: 200px;
+    span {
+      vertical-align: 2px;;
+      font-size: 13px;
+      font-weight: normal;
+    }
+  }
+  input::placeholder {
+    font-weight: normal;
   }
 }
 /* -------------------------- form ------------------------- */
@@ -784,6 +786,32 @@ header {
 }
 
 /*------------------------ contents -------------------------*/
+/*--------------------- micropost-form ----------------------*/
+.micropost_form-wrap {
+  display: flex;
+  justify-content: center;
+  .micropost_form {
+    width: 600px;
+    padding-top: 40px;
+    form {
+      display: flex;
+      flex-direction: column;
+      font-weight: normal;
+      div {
+        label[for=micropost_contents_attributes_0_status] {
+          padding-right: 20px;
+        }
+      }
+      textarea {
+        font-weight: normal;
+      }
+
+    }
+  }
+}
+
+
+/*--------------------- micropost-form ----------------------*/
 
 /*-------------------- right-container ----------------------*/
 

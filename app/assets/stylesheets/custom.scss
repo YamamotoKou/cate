@@ -243,7 +243,7 @@ form {
 }
 /* ------------------------ 投稿ボタン ----------------------- */
 
-/* ------------------------- start ------------------------- */
+/* ----------------------- start_page ---------------------- */
 
 .start-body {
   flex-direction: column;
@@ -306,7 +306,7 @@ form {
   margin-left: 10px;
 }
 
-/* ------------------------- start ------------------------- */
+/* ----------------------- start_page ---------------------- */
 
 /* ------------------------- header ------------------------ */
 
@@ -820,7 +820,30 @@ header {
   }
 }
 /*--------------------- micropost-form ----------------------*/
-
+/*------------------------- search --------------------------*/
+.search_form-wrap {
+  display: flex;
+  justify-content: center;
+  .search_form {
+    width: 600px;
+    form {
+      display: flex;
+      flex-direction: row;
+      input[type=text] {
+        width: 500px;
+      }
+      input[type=submit] {
+        width: 50px;
+        margin: 0;
+        margin-left: 1px;
+      }
+    }
+  }
+}
+.search_results {
+  padding-left: 40px;
+}
+/*------------------------- search --------------------------*/
 /*-------------------- right-container ----------------------*/
 
 .right-container {

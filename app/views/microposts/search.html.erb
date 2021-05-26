@@ -1,17 +1,22 @@
 <% provide(:title, "検索") %>
-
-<%= form_with url: search_path, local: true, method: :get do |f| %>
-  <%= f.text_field :keyword, :value => @keyword, placeholder: "キーワードを入力" %>
-  <%= f.submit "検索", class: "btn btn-primary" %>
-<% end %>
+<br>
+<div class="search_form-wrap">
+  <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :keyword, :value => @keyword, placeholder: "キーワードを入力" %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <% if @feed_items.present? %>
-  <div class="feed jscroll" >
+  <div class="feed jscroll all-microposts" >
     <%= render 'shared/feed' %>
   </div>
 <% else %>
-  <label>検索結果がありません。</label>
+  <span class="search_results">検索結果がありません</span>
 <% end %>
+
 
 <script>
 $(window).on('scroll', function() {

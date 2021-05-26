@@ -40,6 +40,7 @@ class MicropostsController < ApplicationController
       @microposts = Micropost.search(params[:keyword])
       @feed_items = @microposts.page(params[:page])
     end
+    @trend_posts = Micropost.trend
   end
 
   private

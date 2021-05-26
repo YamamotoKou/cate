@@ -89,7 +89,8 @@ $gray-medium-light: #eaeaea;
 }
 
 .underline-font {
-  border-bottom: solid 2px $off-color;
+  border-left: solid 4px $off-color;
+  padding-left: 5px;
   margin-bottom: 15px;
 }
 
@@ -797,6 +798,10 @@ header {
       display: flex;
       flex-direction: column;
       font-weight: normal;
+      align-items: flex-start;
+      input[type=file] {
+        margin-bottom: 30px;
+      }
       div {
         label[for=micropost_contents_attributes_0_status] {
           padding-right: 20px;
@@ -809,8 +814,6 @@ header {
     }
   }
 }
-
-
 /*--------------------- micropost-form ----------------------*/
 
 /*-------------------- right-container ----------------------*/

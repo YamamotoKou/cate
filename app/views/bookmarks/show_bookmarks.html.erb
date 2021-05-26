@@ -1,18 +1,13 @@
 <% provide(:title, "#{@title}") %>
 <% if current_user.bookmark_posts.any? %>
-  <span><b>ブックマークした投稿の数:</b> <%= current_user.bookmark_posts.count %></span>
-  <div class="feed jscroll" >
-    <div class="micropost jscroll" >
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= paginate @microposts %>
-    </div>
+  <br>
+  <span class="bookmark-title">ブックマークした投稿の数: <%= current_user.bookmark_posts.count %></span>
+  <div class="feed jscroll all-microposts" >
+    <%= render 'shared/feed' %>
   </div>
 <% else %>
   <span>現在ブックマークした投稿はありません。</span>
 <% end %>
-
 <script>
   $(window).on('scroll', function() {
       scrollHeight = $(document).height();

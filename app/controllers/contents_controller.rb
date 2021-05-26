@@ -5,8 +5,7 @@ class ContentsController < ApplicationController
       @micropost = Micropost.find(params[:micropost_id])
       @user = User.find_by(id: @micropost.user_id)
       @contents = @micropost.contents
-
-      
+      @trend_posts = Micropost.trend
     else
       redirect_to home_url
     end

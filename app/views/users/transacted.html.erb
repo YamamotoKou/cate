@@ -1,12 +1,15 @@
 <% provide(:title, "#{@title}") %>
-<% if current_user.bookmark_posts.any? %>
-  <br>
-  <span class="page-sub-title">ブックマークした投稿の数: <%= current_user.bookmark_posts.count %></span>
-  <div class="feed jscroll all-microposts" >
-    <%= render 'shared/feed' %>
+<% if @transaction_logs %>
+  <div class="feed jscroll all-contents" >
+    <div class="transacted_contents-wrap">
+      <span class="page-sub-title">購入したコンテンツの数: <%= current_user.transaction_buyer_logs.count %></span>
+      <% @contents.each do |content| %>
+        <%= render 'contents/transacted_content', content: content %>
+      <% end %>
+    </div>
   </div>
 <% else %>
-  <span>ブックマークした投稿はありません</span>
+  <span>購入したコンテンツはありません</span>
 <% end %>
 <script>
   $(window).on('scroll', function() {

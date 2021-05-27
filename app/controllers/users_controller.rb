@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(catena_id: params[:id])
     @microposts = @user.microposts.page(params[:page])
-    @trend_posts = Micropost.find(Like.group(:micropost_id).order(Arel.sql('count(micropost_id) desc')).limit(5).pluck(:micropost_id))
+    @trend_posts = Micropost.trend
     @likes = @user.likes.build
     redirect_to root_url and return unless @user.activated?
 
@@ -95,7 +95,15 @@ class UsersController < ApplicationController
     @microposts = @user.liked_posts.page(params[:page])
     render 'show_likes'
   end
-  
+
+  def transacted
+    @title = "購入品"
+    @trend_posts = Micropost.trend
+    @user  = User.find(current_user.id)
+    @transaction_logs = TransactionLog.where(buyer_id: @user.id)
+    @contents = Content.where(id: @transaction_logs.map(&:content_id))
+  end
+
   private
 
     def user_params

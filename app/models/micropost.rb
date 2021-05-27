@@ -35,6 +35,10 @@ class Micropost < ApplicationRecord
     image.variant(resize_to_fill: [250, 250])
   end
 
+  def transacted_image
+    image.variant(resize_to_fill: [100, 100])
+  end
+
   def create_notification_like!(current_user)
     temp = Notification.where(["sender_id = ? and recipient_id = ? and micropost_id = ? and action = ? ",current_user.id, user_id, id, 'like'])
     if temp.blank?

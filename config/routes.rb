@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/search', to: 'microposts#search'
   get  '/signup',  to: 'users#new'
   get '/users', to: 'users#index'
+  get '/transacted', to: 'users#transacted'
   get '/bookmarks', to: 'bookmarks#show'
   get '/notifications', to: 'notifications#index'
   get    '/login',   to: 'sessions#new'

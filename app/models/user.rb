@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :likes,            dependent: :destroy
   has_many :bookmarks,        dependent: :destroy
   has_many :point_histories,  dependent: :destroy
-  has_many :transaction_logs, class_name: "TransactionLog", foreign_key: [:seller_id, :buyer_id]
+  has_many :transaction_buyer_logs, class_name: "TransactionLog", foreign_key: :buyer_id
+  has_many :transaction_seller_logs, class_name: "TransactionLog", foreign_key: :seller_id
   has_many :rooms,            through: :entries
   has_many :liked_posts,      through: :likes, source: :micropost
   has_many :bookmark_posts,   through: :bookmarks, source: :micropost

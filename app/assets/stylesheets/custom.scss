@@ -110,7 +110,7 @@ $gray-medium-light: #eaeaea;
   letter-spacing: -1.5px;
 }
 
-.bookmark-title {
+.page-sub-title {
   font-size: 15px;
   padding-left: 15px;
 }
@@ -514,7 +514,7 @@ header {
         .user-name {
           padding-left: 2px;
           font-size: 13px;
-          color: $nav-off-color;
+          color: $off-color;
           &:hover {
             color: $site-color;
           }
@@ -844,6 +844,34 @@ header {
   padding-left: 40px;
 }
 /*------------------------- search --------------------------*/
+/*------------------- transacted_contents -------------------*/
+.all-contents {
+  display: flex;
+  justify-content: center;
+  .transacted_contents-wrap {
+    width: 450px;
+    .page-sub-title {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      display: inline-block;
+    }
+    .transacted_contents {
+      display: flex;
+      padding-bottom: 30px;
+      div {
+        .post_contents-wrap {
+          display: flex;
+          flex-direction: column;
+          font-size: 15px;
+          padding-left: 8px;
+          padding-top: 8px;
+        }
+      }
+    }
+  } 
+}
+
+/*------------------- transacted_contents -------------------*/
 /*-------------------- right-container ----------------------*/
 
 .right-container {
@@ -864,7 +892,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 4;
 
     .my-icons {
       padding-right: 15px;

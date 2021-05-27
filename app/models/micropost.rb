@@ -28,7 +28,7 @@ class Micropost < ApplicationRecord
 
   #画像のリサイズ
   def center_container_image
-    image.variant(resize_to_fill: [310, 310])
+    image.variant(resize_to_fill: [300, 300])
   end
 
   def right_container_image

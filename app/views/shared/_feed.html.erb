@@ -1,7 +1,20 @@
 <% if @feed_items.any? %>
-  <ul class="microposts">
+  <ul class="microposts jscroll">
    <%= render @feed_items %>
+   <%= paginate @feed_items,
+                 params: { controller: :microposts, action: :home } %>
   </ul>
-  <%= paginate @feed_items,
-                params: { controller: :microposts, action: :home } %>
 <% end %>
+
+<script>
+  $(window).on('scroll', function() {
+      scrollHeight = $(document).height();
+      scrollPosition = $(window).height() + $(window).scrollTop();
+      if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+            $('.jscroll').jscroll({
+              contentSelector: '.microposts',
+              nextSelector: 'span.next:last a'
+            });
+      }
+  });
+</script>

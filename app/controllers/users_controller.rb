@@ -97,7 +97,7 @@ class UsersController < ApplicationController
   end
 
   def transacted
-    @title = "購入品"
+    @title = "購入済み"
     @trend_posts = Micropost.trend
     @user  = User.find(current_user.id)
     @transaction_logs = TransactionLog.where(buyer_id: @user.id)

@@ -1,34 +1,37 @@
-<div class="transacted_contents">
-  <%= image_tag content.transacted_post.transacted_image, class: "post-img" if content.transacted_post.image.attached?%>
-  <div>
-    <div class="title-info">
-      <%= link_to user_path(content.transacted_post.user) do %>
-        <%= image_tag content.transacted_post.user.sub_icon_avatar, class: "user-icon"%>
-      <% end %>
-      <div class="title-status">
-        <%= link_to micropost_contents_path(micropost_id: content.micropost_id) do %>
-          <span class="post-title">
-            <%= content.transacted_post.text %>
-          </span>
+<div class="transacted_content-wrap">
+  <%= link_to micropost_contents_path(micropost_id: content.micropost_id), class: "post-link" do %><% end %>
+  <div class="transacted_content">
+    <%= image_tag content.transacted_post.transacted_image, class: "post-img" if content.transacted_post.image.attached?%>
+    <div>
+      <div class="title-info">
+        <%= link_to user_path(content.transacted_post.user) do %>
+          <%= image_tag content.transacted_post.user.sub_icon_avatar, class: "user-icon"%>
         <% end %>
-        <div class="user-info">
-          <%= link_to content.transacted_post.user do %>
-            <span class="user-name"><%= content.transacted_post.user.name %></span>
-            <span class="user-id"><%= content.transacted_post.user.catena_id %></span>
+        <div class="title-status">
+          <%= link_to micropost_contents_path(micropost_id: content.micropost_id) do %>
+            <span class="post-title">
+              <%= content.transacted_post.text %>
+            </span>
           <% end %>
-          <span class="post-time">
-            ・ <%= time_ago_in_words(content.transacted_post.created_at) %>
-          </span>
+          <div class="user-info">
+            <%= link_to content.transacted_post.user do %>
+              <span class="user-name"><%= content.transacted_post.user.name %></span>
+              <span class="user-id"><%= content.transacted_post.user.catena_id %></span>
+            <% end %>
+            <span class="post-time">
+              ・ <%= time_ago_in_words(content.transacted_post.created_at) %>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="post_contents-wrap">
-      <span class="post_content-title">
-        <%= content.title %>
-      </span>
-      <span class="post_content-status">
-        <%= content.created_at %>購入(<%= content.price %>ポイント)
-      </span>
+      <div class="post_contents-wrap">
+        <span class="post_content-title">
+          <%= content.title %>
+        </span>
+        <span class="post_content-status">
+          <%= content.created_at.strftime('%Y/%m/%d') %>購入(<%= content.price %>ポイント)
+        </span>
+      </div>
     </div>
   </div>
 </div>

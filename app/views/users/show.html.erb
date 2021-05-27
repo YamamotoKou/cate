@@ -36,7 +36,7 @@
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>投稿 (<%= @user.microposts.count %>)</h3>
-      <div class="feed all-microposts" >
+      <div class="all-microposts" >
         <ul class="microposts jscroll">
           <%= render @microposts %>
           <%= paginate @microposts %>

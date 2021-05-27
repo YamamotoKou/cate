@@ -101,7 +101,7 @@ class UsersController < ApplicationController
     @trend_posts = Micropost.trend
     @user  = User.find(current_user.id)
     @transaction_logs = TransactionLog.where(buyer_id: @user.id)
-    @contents = Content.where(id: @transaction_logs.map(&:content_id))
+    @contents = Content.where(id: @transaction_logs.map(&:content_id)).page(params[:page])
   end
 
   private

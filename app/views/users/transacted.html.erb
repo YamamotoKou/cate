@@ -1,23 +1,25 @@
 <% provide(:title, "#{@title}") %>
 <% if @transaction_logs %>
-  <div class="feed jscroll all-contents" >
-    <div class="transacted_contents-wrap">
+  <div class="all-contents" >
+    <div class="jscroll transacted_contents-wrap">
       <span class="page-sub-title">購入したコンテンツの数: <%= current_user.transaction_buyer_logs.count %></span>
       <% @contents.each do |content| %>
         <%= render 'contents/transacted_content', content: content %>
       <% end %>
+      <%= paginate @contents %>
     </div>
   </div>
 <% else %>
   <span>購入したコンテンツはありません</span>
 <% end %>
+
 <script>
   $(window).on('scroll', function() {
       scrollHeight = $(document).height();
       scrollPosition = $(window).height() + $(window).scrollTop();
       if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
             $('.jscroll').jscroll({
-              contentSelector: '.micropost',
+              contentSelector: '.transacted_contents-wrap',
               nextSelector: 'span.next:last a'
             });
       }

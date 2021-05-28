@@ -1,0 +1,16 @@
+<% unless @user.id == current_user.id %>
+  <% if (current_user.followed_by? @user) && (@user.followed_by? current_user)  %>
+    <% if @isRoom == true %>
+      <%= link_to room_path(@roomId), class: "chat_btn" do %>
+        <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="envelopeAltIconTitle" stroke="#a8abb1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#2329D6"> <title id="envelopeAltIconTitle">Envelope</title> <rect width="20" height="14" x="2" y="5"/> <path stroke-linecap="round" d="M2 5l10 9 10-9"/> </svg>
+      <% end %>
+    <% else %>
+      <%= form_with model: @room, class: "chat_start" do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

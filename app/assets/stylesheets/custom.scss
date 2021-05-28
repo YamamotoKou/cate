@@ -73,9 +73,14 @@ $gray-medium-light: #eaeaea;
   box-sizing: border-box;
 }
 
+//投稿画像の角を削る
 .post-img {
   border-radius: 2%;
 }
+
+
+
+/*---------- フォント ------------*/
 
 .title-font {
   font-size: 25px;
@@ -83,12 +88,14 @@ $gray-medium-light: #eaeaea;
   padding-bottom: 20px;
 }
 
+//ブックマークページのカウント数などのフォント
 .sub-title-font {
   font-size: 15px;
   font-weight: 700;
 }
 
-.underline-font {
+//左にborderのついたフォームのタイトルフォント
+.line-font {
   border-left: solid 4px $off-color;
   padding-left: 5px;
   margin-bottom: 15px;
@@ -110,6 +117,7 @@ $gray-medium-light: #eaeaea;
   letter-spacing: -1.5px;
 }
 
+//ブックマークページのカウント数などのフォント
 .page-sub-title {
   font-size: 15px;
   padding-left: 15px;
@@ -604,7 +612,6 @@ header {
 }
 
 /* ---------------------- post-status ---------------------- */
-
 /* ----------------------- micropost ----------------------- */
 .post-link {
   position: absolute;
@@ -725,7 +732,6 @@ header {
 }
 
 /*------------------------ micropost ------------------------*/
-
 /*------------------------ contents -------------------------*/
 .contents-wrap {
   display: flex;
@@ -791,6 +797,87 @@ header {
 }
 
 /*------------------------ contents -------------------------*/
+/*------------------------- mypage --------------------------*/
+
+.mypage-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: $border-color solid 1px;
+  .mypage {
+    width: 620px;
+    padding-top: 40px;
+    display: flex;
+    img {
+      border-radius: 50%;
+    }
+    .user_info {
+      display: flex;
+      flex-direction: column;
+      width: 640px;
+      .user_info-top {
+        display: flex;
+        position: relative;
+        span {
+          font-size: 18px;
+          padding: 10px;
+        }
+        .user_action-form {
+          display: flex;
+          position: absolute;
+          right: 0;
+          padding: 3px;
+          a { 
+            color: $site-color;
+            border: $site-color solid 2px;
+            @include box-sizing;
+            border-radius: 3px;
+            margin-left: 5px;
+            height: 30px;
+            width: 30px;
+            text-align: center; //左右中央に
+            svg {
+              padding-top: 1px;
+              stroke: $site-color;
+            }
+            &:hover {
+              background-color: darken(white, 8%);
+              transition: .1s;
+            }
+          }
+          input[type=submit] {
+            margin: 0;
+          }
+          .chat_start {
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+  .user_post {
+    display: flex;
+    align-self: flex-start;
+    padding-top: 20px;
+    a {
+      font-size: 15px;
+      font-weight: 700;
+      padding: 20px;
+      color: $nav-off-color;
+      &:hover{
+        background-color: darken(white, 3%);
+        transition: .1s;
+        color: $site-color;
+      }
+      &:first-child{
+        margin-left: 30px;
+      }
+    }
+  }
+}
+
+
+/*------------------------- mypage --------------------------*/
 /*--------------------- micropost-form ----------------------*/
 .micropost_form-wrap {
   display: flex;
@@ -1090,25 +1177,25 @@ aside {
 }
 
 .stats {
-  overflow: auto;
+  display: flex;
   margin-top: 0;
   padding: 0;
   a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid ;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
+    display: flex;
+    color: $nav-off-color;
+    font-size: 15px;
+    &:first-child { //兄弟要素の最初の要素
+      padding-left: 10px;
+      padding-right: 5px;
     }
     &:hover {
-      text-decoration: none;
-      color: blue;
+      color: $site-color;
     }
-  }
-  strong {
-    display: block;
+    span {
+      font-weight: 700;
+      padding-top: 2px;
+      padding-right: 5px;
+    }
   }
 }
 

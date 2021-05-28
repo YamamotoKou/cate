@@ -1,12 +1,8 @@
-<% provide(:title, "#{@user.name} / #{@title}") %>
-<section class="user_info">
-  <%= render 'shared/user_info' %>
-  <span><%= link_to "view my profile", @user %></span>
-</section>
-<h3>いいねした投稿</h3>
+<% provide(:title, "#{@user.name} / #{@title}した投稿") %>
+
+<%= render 'shared/user_stats' %>
 
 <% if @user.liked_posts.any? %>
-  <span><b>いいねした投稿の数:</b> <%= @user.liked_posts.count %></span>
   <div class="feed jscroll" >
     <div class="micropost jscroll" >
       <ol class="microposts">

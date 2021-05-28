@@ -93,6 +93,23 @@ class UsersController < ApplicationController
     @title = "いいね"
     @user  = User.find_by(catena_id: params[:id])
     @microposts = @user.liked_posts.page(params[:page])
+    @trend_posts = Micropost.trend
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id #お互いのroom_idを取得
+          end
+        end
+      end
+      unless @isRoom #まだ共有のルームがなければインスタンスを生成
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
     render 'show_likes'
   end
 

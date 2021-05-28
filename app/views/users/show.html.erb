@@ -1,50 +1,16 @@
-<% provide(:title, "#{@user.name}") %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= render 'shared/user_info' %>
-      </h1>
-    </section>
-    <% if current_user?(@user) %>
-      <div>
-         <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-x btn-primary" %>
-      </div>
-    <% end %>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-    <%= link_to "いいね一覧", likes_user_path(@user) %>
-  </aside>
+<% provide(:title, "#{@user.name} / 投稿") %>
 
-  <% unless @user.id == current_user.id %>
-    <% if (current_user.followed_by? @user) && (@user.followed_by? current_user)  %>
-    <% if @isRoom == true %>
-      <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-    <% else %>
-      <%= form_with model: @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
-        <% end %>
-        <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
-      <% end %>
-    <% end %>
-    <% end %>
+<%= render 'shared/user_stats' %>
+
+<div>
+  <% if @user.microposts.any? %>
+    <div class="all-microposts">
+      <ul class="microposts jscroll">
+        <%= render @microposts %>
+        <%= paginate @microposts %>
+      </ul>
+    </div>
   <% end %>
-
-  <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>投稿 (<%= @user.microposts.count %>)</h3>
-      <div class="all-microposts" >
-        <ul class="microposts jscroll">
-          <%= render @microposts %>
-          <%= paginate @microposts %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-
 </div>
 
 <script>

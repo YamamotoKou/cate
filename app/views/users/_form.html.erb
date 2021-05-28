@@ -17,11 +17,8 @@
   <%= f.password_field :password_confirmation, placeholder: "再度パスワードを入力" %>
 
   <% if logged_in? %>
-    <%= f.label :avatar %>
+    <%= f.label :プロフィール画像 %>
     <%= f.file_field :avatar %>
-  <% end %>
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar %>
   <% end %>
 
   <%= f.submit yield(:button_text) %>

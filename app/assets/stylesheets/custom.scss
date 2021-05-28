@@ -808,6 +808,7 @@ header {
     width: 620px;
     padding-top: 40px;
     display: flex;
+    align-items: flex-start;
     img {
       border-radius: 50%;
     }
@@ -815,9 +816,9 @@ header {
       display: flex;
       flex-direction: column;
       width: 640px;
+      position: relative;
       .user_info-top {
         display: flex;
-        position: relative;
         span {
           font-size: 18px;
           padding: 10px;
@@ -827,7 +828,7 @@ header {
           position: absolute;
           right: 0;
           padding: 3px;
-          a { 
+          a {
             color: $site-color;
             border: $site-color solid 2px;
             @include box-sizing;
@@ -850,6 +851,13 @@ header {
           }
           .chat_start {
             margin-left: 3px;
+          }
+          .profile_edit-btn {
+            font-size: 14px;
+            font-weight: 700;
+            padding: 0 3px;
+            padding-top: 3px;
+            width: auto;
           }
         }
       }

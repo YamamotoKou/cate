@@ -2,16 +2,16 @@
 
 <%= render 'shared/user_stats' %>
 
-<div>
-  <% if @user.microposts.any? %>
-    <div class="all-microposts">
-      <ul class="microposts jscroll">
-        <%= render @microposts %>
-        <%= paginate @microposts %>
-      </ul>
-    </div>
-  <% end %>
-</div>
+
+<% if @user.microposts.any? %>
+  <div class="all-microposts">
+    <ul class="microposts jscroll">
+      <%= render @microposts %>
+      <%= paginate @microposts %>
+    </ul>
+  </div>
+<% end %>
+
 
 <script>
   $(window).on('scroll', function() {

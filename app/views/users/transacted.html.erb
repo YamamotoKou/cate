@@ -1,5 +1,5 @@
 <% provide(:title, "#{@title}") %>
-<% if @transaction_logs %>
+<% if @transaction_logs.any? %>
   <div class="all-contents" >
     <div class="jscroll transacted_contents-wrap">
       <span class="page-sub-title">購入したコンテンツの数: <%= current_user.transaction_buyer_logs.count %></span>

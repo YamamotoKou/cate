@@ -15,7 +15,7 @@ class BookmarksController < ApplicationController
   def show
     @title = "ブックマーク"
     @user  = User.find(current_user.id)
-    @feed_items = @user.bookmark_posts.page(params[:page])
+    @microposts = @user.bookmark_posts.page(params[:page])
     @trend_posts = Micropost.trend
     render 'show_bookmarks'
   end

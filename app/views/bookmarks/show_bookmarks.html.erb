@@ -3,11 +3,12 @@
   <br>
   <span class="page-sub-title">ブックマークした投稿の数: <%= current_user.bookmark_posts.count %></span>
   <div class="feed jscroll all-microposts" >
-    <%= render 'shared/feed' %>
+    <%= render @microposts %>
   </div>
 <% else %>
   <span>ブックマークした投稿はありません</span>
 <% end %>
+
 <script>
   $(window).on('scroll', function() {
       scrollHeight = $(document).height();

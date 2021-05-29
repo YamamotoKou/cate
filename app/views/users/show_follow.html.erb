@@ -1,27 +1,10 @@
 <% provide(:title, "#{@user.name} / #{@title}") %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <%= render 'shared/user_info' %>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          # avatar
-        </div>
-      <% end %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= paginate @users %>
-    <% end %>
-  </div>
-</div>
+
+<%= render 'shared/user_stats' %>
+
+<% if @users.any? %>
+  <ul class="follow_list">
+    <%= render @users %>
+    <%= paginate @users %>
+  </ul>
+<% end %>

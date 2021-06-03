@@ -3,11 +3,11 @@
     <% provide(:title, "投稿") %>
     <%= form_with(model: @micropost, local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <span class="sub-title-font underline-font">画像</span>
+      <span class="sub-title-font line-font">画像</span>
       <%= f.text_field :text, placeholder: "投稿のタイトル" %>
       <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
       <%= f.fields_for :contents do |ct| %>
-        <span class="sub-title-font underline-font" >コンテンツ</span>
+        <span class="sub-title-font line-font" >コンテンツ</span>
         <div>
           <%= ct.radio_button :status, :free, checked: true, id: 'radio'%>
           <%= ct.label :status, "無料公開"%>

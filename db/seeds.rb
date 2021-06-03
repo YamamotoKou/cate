@@ -22,7 +22,7 @@ user2.avatar.attach(io: File.open(Rails.root.join('app/assets/images/naokosan.jp
 
 users = User.order(:created_at).take(2)
 #投稿を作成
-150.times do
+40.times do
   text = "おはようございます"
   users.each{ |user| user.microposts.create!(text: text)}
 end

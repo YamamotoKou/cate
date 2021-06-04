@@ -14,7 +14,7 @@ local:
 #   region: us-east-1
 #   bucket: your_own_bucket
 
-# amazon:
+# amazon: ここ使います！！！！
 #   service: S3
 #   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
 #   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
